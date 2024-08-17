@@ -66,14 +66,7 @@ class _ProductsPageState extends State<ProductsPage> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios_new_rounded,color: Colors.white,),
-            onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage(),));
-            },
-
-          ),
-            centerTitle: true,
+          centerTitle: true,
             title: const Text('Products',style: TextStyle(
               fontSize: 18.0,
               fontWeight: FontWeight.bold,
