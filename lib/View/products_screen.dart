@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'package:http/http.dart' as http;
@@ -47,6 +48,19 @@ class _ProductsPageState extends State<ProductsPage> {
       throw Exception('Failed to load products');
     }
   }
+  Future<void> _signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => LoginPage()),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Sign-out failed: ${e.toString()}')),
+      );
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -65,6 +79,13 @@ class _ProductsPageState extends State<ProductsPage> {
               fontWeight: FontWeight.bold,
               color: Colors.white,
             ),),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.logout,color:Colors.white),
+              onPressed: _signOut,
+              tooltip: 'Sign out',
+            ),
+          ],
           backgroundColor: Colors.black,
         ),
         body: FutureBuilder<Productsmodel>(

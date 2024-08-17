@@ -29,7 +29,7 @@ class _LoginPageState extends State<LoginPage> {
         );
       } on FirebaseAuthException catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Login failed: $e')),
+          const SnackBar(content: Text('Incorrect Email or password')),
         );
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(

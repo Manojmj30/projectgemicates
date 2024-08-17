@@ -34,12 +34,5 @@ class AuthService {
     }
   }
 
-  Future<void> signOut() async {
-    try {
-      await _auth.signOut();
-    } catch (e) {
 
-      throw Exception('Failed to sign out');
-    }
-  }
 }
